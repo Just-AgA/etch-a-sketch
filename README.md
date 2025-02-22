@@ -1,0 +1,1 @@
+Web browser version of the Etch a Sketch project
