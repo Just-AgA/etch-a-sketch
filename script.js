@@ -1,7 +1,8 @@
 const container = document.querySelector(".container");
 const newGrid = document.querySelector(".new-grid");
-const resetColor = document.querySelector(".reset-color");
+const resetColorBtn = document.querySelector(".reset-color");
 
+// Create dynamic grid sized based on user input
 function createGrid(size) {
 
     // Create the grid rows and columns
@@ -19,8 +20,10 @@ function createGrid(size) {
     }
     
     setGridSize(size);
+    resetColor();
 }
 
+// Set the width and height of the grid divs based on their number
 function setGridSize(size) {
     const gridColumns = document.querySelectorAll(".grid-box-column");
 
@@ -38,11 +41,22 @@ function setGridSize(size) {
     });
 }
 
+// Resets the color of the grid divs
+function resetColor() {
+    const gridColumns = document.querySelectorAll(".grid-box-column");
+
+    gridColumns.forEach(col => {
+        col.style.backgroundColor = "rgb(236, 231, 231";
+    });
+}
+
+// Set a random color on each grid div when hovering over them
 container.addEventListener("mouseover", (event)=> {
     const randomColor = Math.floor(Math.random()*16777215).toString(16);
     event.target.style.backgroundColor = `#${randomColor}`;
 })
 
+// Set the grid size based on user input
 newGrid.addEventListener("click", ()=> {
     const input = Number(prompt("Please enter the size of the grid:"));
     container.innerHTML = "";
@@ -50,9 +64,13 @@ newGrid.addEventListener("click", ()=> {
     if(input > 100){
         alert("Grid size too bug,please select a smaller number");
     }
-    
+
     createGrid(input);
 })
 
+resetColorBtn.addEventListener("click", ()=> {
+    createGrid();
+})
 
+// Initialize a 16x16 grid in the beginning
 createGrid(16);
