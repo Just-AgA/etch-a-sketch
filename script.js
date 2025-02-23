@@ -36,4 +36,9 @@ function setGridSize(size) {
     });
 }
 
-createGrid(14);
+container.addEventListener("mouseover", (event)=> {
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    event.target.style.backgroundColor = `#${randomColor}`;
+})
+
+createGrid(100);
