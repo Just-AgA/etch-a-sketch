@@ -1,4 +1,6 @@
 const container = document.querySelector(".container");
+const newGrid = document.querySelector(".new-grid");
+const resetColor = document.querySelector(".reset-color");
 
 function createGrid(size) {
 
@@ -41,4 +43,16 @@ container.addEventListener("mouseover", (event)=> {
     event.target.style.backgroundColor = `#${randomColor}`;
 })
 
-createGrid(100);
+newGrid.addEventListener("click", ()=> {
+    const input = Number(prompt("Please enter the size of the grid:"));
+    container.innerHTML = "";
+
+    if(input > 100){
+        alert("Grid size too bug,please select a smaller number");
+    }
+    
+    createGrid(input);
+})
+
+
+createGrid(16);
